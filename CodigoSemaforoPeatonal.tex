@@ -1,0 +1,78 @@
+// SEMÁFORO DE COCHES
+const int rojoCoche = 13;
+const int amarilloCoche = 12;
+const int verdeCoche = 11;
+
+// SEMÁFORO DE PEATONES
+const int rojoPeaton = 10;
+const int verdePeaton = 9;
+
+void setup() {
+  pinMode(rojoCoche, OUTPUT);
+  pinMode(amarilloCoche, OUTPUT);
+  pinMode(verdeCoche, OUTPUT);
+
+  pinMode(rojoPeaton, OUTPUT);
+  pinMode(verdePeaton, OUTPUT);
+}
+
+void loop() {
+
+  // ==================================
+  // 1. COCHES AVANZAN
+  // ==================================
+  digitalWrite(verdeCoche, HIGH);
+  digitalWrite(amarilloCoche, LOW);
+  digitalWrite(rojoCoche, LOW);
+
+  digitalWrite(rojoPeaton, HIGH);
+  digitalWrite(verdePeaton, LOW);
+
+  delay(5000);
+
+
+  // ==================================
+  // 2. COCHES: AMARILLO
+  // ==================================
+  digitalWrite(verdeCoche, LOW);
+  digitalWrite(amarilloCoche, HIGH);
+
+  digitalWrite(rojoPeaton, HIGH);
+  digitalWrite(verdePeaton, LOW);
+
+  delay(2000);
+
+
+  // ==================================
+  // 3. COCHES: ROJO
+  //    PEATONES: VERDE
+  // ==================================
+  digitalWrite(amarilloCoche, LOW);
+  digitalWrite(rojoCoche, HIGH);
+
+  digitalWrite(rojoPeaton, LOW);
+  digitalWrite(verdePeaton, HIGH);
+
+  delay(5000);
+
+
+  // ==================================
+  // 4. PEATONES: VERDE PARPADEANDO
+  // ==================================
+  for (int i = 0; i < 3; i++) {
+    digitalWrite(verdePeaton, LOW);
+    delay(500);
+
+    digitalWrite(verdePeaton, HIGH);
+    delay(500);
+  }
+
+
+  // ==================================
+  // 5. PEATONES: ROJO
+  // ==================================
+  digitalWrite(verdePeaton, LOW);
+  digitalWrite(rojoPeaton, HIGH);
+
+  delay(1000);
+}
